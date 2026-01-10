@@ -1,0 +1,75 @@
+# Eve Online Thera Wormhole Discord Bot Configuration
+# =====================================================
+# Copy this file to config.yaml and fill in your values
+
+# Discord Configuration
+discord:
+  # Discord Bot Token
+  # Create a bot at https://discord.com/developers/applications
+  bot_token: "YOUR_DISCORD_BOT_TOKEN_HERE"
+  
+  # Channel ID where notifications will be sent
+  # Right-click channel > Copy ID (enable Developer Mode in Discord settings)
+  channel_id: "YOUR_CHANNEL_ID_HERE"
+  
+  # Whether to use @everyone mention in notifications
+  mention_everyone: true
+  
+  # Custom role ID to mention instead of @everyone (optional)
+  # Set to null to use @everyone, or provide a role ID like "123456789012345678"
+  mention_role_id: null
+
+# Departure Systems (where you travel FROM)
+# Add multiple systems you want to check routes from (e.g., HQ, staging systems)
+departure_systems:
+  - name: "Jita"  # Your HQ system
+    system_id: 30000142
+    
+  # Add more departure systems as needed:
+  # - name: "Staging System"
+  #   system_id: 12345678
+
+# Destination Systems to Monitor
+# Add systems you want to track connections to
+# Each destination has a name, system ID, and maximum jump threshold
+destinations:
+  - name: "Jita"
+    system_id: 30000142
+    max_jumps: 10  # Alert if total jumps (HQ->Thera + Thera->Dest) is <= this value
+    
+  - name: "Amarr"
+    system_id: 30002187
+    max_jumps: 12
+    
+  - name: "Dodixie"
+    system_id: 30002659
+    max_jumps: 12
+    
+  - name: "Rens"
+    system_id: 30002510
+    max_jumps: 12
+    
+  - name: "Hek"
+    system_id: 30002053
+    max_jumps: 12
+
+# Polling Configuration
+polling:
+  # How often to check for new connections (in seconds)
+  interval_seconds: 300  # 5 minutes
+  
+  # Don't re-alert for the same connection within this time (in seconds)
+  cooldown_seconds: 3600  # 1 hour
+
+# Route Calculation Settings
+route:
+  # Route preference: "shortest", "secure", "insecure"
+  # "shortest" - Shortest route regardless of security
+  # "secure" - Prefer high-sec routes
+  # "insecure" - Prefer low/null-sec routes
+  preference: "shortest"
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "thera_bot.log"
