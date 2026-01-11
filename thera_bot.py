@@ -293,7 +293,7 @@ class TheraConnection:
     def get_security_emoji(self) -> str:
         """Get an emoji representing the security class."""
         sec_emojis = {
-            "hs": "🟢",  # High-sec
+            "hs": "🔵",  # High-sec
             "ls": "🟡",  # Low-sec
             "ns": "🔴",  # Null-sec
         }
